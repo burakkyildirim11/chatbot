@@ -1,0 +1,32 @@
+{"intents": [
+        {"tag": "greetings",
+         "patterns": ["hello", "hey", "hi","Hey","good day","Greetings","what's up?","how is it going?"],
+         "responses": ["Hello!", "Hey!", "What can I do for you?", "Hi there, how can I help?"]
+        },
+        {"tag": "goodbye",
+         "patterns": ["cya", "see you later", "goodbye", "I am Leaving", "have a Good day","bye","cao","see ya"],
+         "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"]
+        },
+        {"tag": "thanks",
+         "patterns": ["thanks", "thank you", "that's helpful", "awesome, thanks", "thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "age",
+         "patterns": ["how old", "what is your age", "how old are you", "age"],
+         "responses": ["My owner Burak is 21 years old!", "21 years!"],
+         "context": [""]
+        },
+        {"tag": "name",
+         "patterns": ["what is your name", "what should I call you", "whats your name?", "who are you?", "Can you tell me your name?"],
+         "responses": ["You can call me ChatBot!", "I'm ChatBot!", "I'm ChatBot the assistant of Burak!"]
+        },
+        {"tag": "shop",
+         "patterns": ["Id like to buy something","what are your products?","what do you recommend?"],
+         "responses": ["Sorry, I don't sell anything"]
+        },
+        {"tag": "hours",
+         "patterns": ["When are you guys open", "what are your hours"],
+         "responses": ["24/7"]
+        }
+   ]
+}
