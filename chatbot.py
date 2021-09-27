@@ -2,6 +2,8 @@ import random
 import json
 import pickle
 import numpy as np
+from googlesearch import search
+
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -54,7 +56,14 @@ def get_response(intents_list, intents_json):
 print("GO! Bot is running!")
 
 while True:
+    print("If there's something you want to google search for, please start with a '?' ")
     message = input("")
     ints = predict_class(message)
-    res = get_response(ints, intents)
-    print(res)
+    if message.find('?')!=-1:
+        [action, query] = message.split("?")
+        for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+            print(j)
+    else:
+        res = get_response(ints, intents)
+        print(res)
+

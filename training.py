@@ -20,6 +20,13 @@ from tensorflow.keras.optimizers import SGD
 
 lemmatizer = WordNetLemmatizer()
 
+#Python NLTK'da Stemming ve Lemmatization, Doğal Dil İşleme için metin normalleştirme teknikleridir.
+#NLTK'da Lemmatization, anlamı ve bağlamına bağlı olarak bir kelimenin lemmasını bulmanın algoritmik sürecidir.
+#Lemmatizasyon genellikle, çekim sonlarını kaldırmayı amaçlayan kelimelerin morfolojik analizini ifade eder.
+#Lemma olarak bilinen bir kelimenin taban veya sözlük biçimini döndürmeye yardımcı olur.
+
+
+
 intents = json.loads(open('intents.json').read())
 
 words = []
@@ -29,13 +36,22 @@ ignore_letters = ['?','!','.',',']
 
 for intent in intents['intents']:
     for pattern in intent['patterns']:
-        word_list = nltk.word_tokenize(pattern)
-        words.extend(word_list)
-        documents.append((word_list, intent['tag']))
-        if intent['tag'] not in classses:
-            classses.append(intent['tag'])
+        word_list = nltk.word_tokenize(pattern) #pattern icindeki kelimeleri word_list'e atti
+        words.extend(word_list) #word_list'i, words dizisine koydu
+        documents.append((word_list, intent['tag'])) #document'e intent['tag']'i ekle
+        if intent['tag'] not in classses: #classes icinde yoksa o tag
+            classses.append(intent['tag']) #ekle
 
-words = [lemmatizer.lemmatize(word) for word in words if word not in ignore_letters]
+words = [lemmatizer.lemmatize(word) for word in words if word not in ignore_letters] #words'un icinden word'leri al, eger word ignore_letters'te yoksa
+#ve ona lemmatizer.lemmatize(word) islemini yap; words'e ata.
+#peki burada lemmatizer.lemmatize(word) ne anlama geliyor -> aldıgı kelimeyi sadelestiriyor
+
+#List omprehensions Hk.
+#List omprehensions, bir ifade(burada-> lemmatizer.lemmatize(word))  ve ardından bir for yan tumcesi, ardından sifir
+#veya daha fazla for veya if yan tümceleri içeren parantezlerden olusur. Sonuc, ifadenin onu takip eden for ve
+#if cumleleri baglamında değerlendirilmesinden kaynaklanan yeni bir liste olacaktir.
+
+
 words = sorted(set(words))
 
 
